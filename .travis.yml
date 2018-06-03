@@ -11,5 +11,6 @@ before_script:
   - psql -c 'create database datingapp;' -U postgres
 script:
   - dotnet build
+  - dotnet ef database update
 notifications:
   email: false
