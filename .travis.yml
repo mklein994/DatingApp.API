@@ -2,8 +2,6 @@ language: csharp
 mono: none
 dotnet: 2.1.300
 env:
-  global:
-    - PGPORT=5433
   matrix:
     - DefaultConnection="Server=localhost; Database=datingapp; Username=postgres"
 addons:
@@ -15,8 +13,8 @@ addons:
 services:
   - postgresql
 before_script:
-  - psql -l
-  - psql -h 127.0.0.1 -U postgres -c 'create database datingapp;'
+  - psql -c 'create database datingapp;' -U postgres
+  - psql -l -U postgres
 script:
   - dotnet build
   - dotnet ef database update
