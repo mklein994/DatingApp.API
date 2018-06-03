@@ -14,6 +14,7 @@ stages:
   - build
 
 connect:
+  image: postgres:latest
   stage: connect
   script:
     - export PGPASSWORD=$POSTGRES_PASSWORD
