@@ -36,7 +36,7 @@ namespace DatingApp.API
         {
             var key = Encoding.ASCII.GetBytes(Configuration.GetSection("AppSettings:Token").Value);
             services.AddDbContext<DataContext>(x => x
-                .UseMySql(Configuration.GetConnectionString("DefaultConnection"))
+                .UseNpgsql(Configuration.GetConnectionString("DefaultConnection"))
                 .ConfigureWarnings(warnings => warnings.Ignore(CoreEventId.IncludeIgnoredWarning)));
             services.AddTransient<Seed>();
             services.AddMvc().AddJsonOptions(opt =>
@@ -115,7 +115,7 @@ namespace DatingApp.API
                     }));
             }
 
-            seeder.SeedUsers();
+            // seeder.SeedUsers();
             app.UseCors(x => x.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin().AllowCredentials());
             app.UseAuthentication();
             app.UseDefaultFiles();
