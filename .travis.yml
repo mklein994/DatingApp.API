@@ -2,7 +2,10 @@ language: csharp
 mono: none
 dotnet: 2.1.300
 env:
-  - DefaultConnection="Server=localhost; Database=datingapp; Username=postgres"
+  global:
+    - PGPORT=5433
+  matrix:
+    - DefaultConnection="Server=localhost; Database=datingapp; Username=postgres"
 addons:
   postgresql: "10"
   apt:
