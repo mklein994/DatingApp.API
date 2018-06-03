@@ -1,26 +1,7 @@
 language: csharp
 mono: none
 dotnet: 2.1.300
-env:
-  global:
-    - PGPORT=5433
-  matrix:
-    - DefaultConnection="Server=localhost; Database=datingapp; Username=postgres"
-addons:
-  postgresql: "10"
-  apt:
-    packages:
-      - postgresql-10
-      - postgresql-client-10
-services:
-  - postgresql
-before_script:
-  # sleep a bit to allow the postgres service to wake up
-  - sleep 3
-  - psql -h 127.0.0.1 -c 'create database datingapp;' -U postgres -w
-  - psql -l -U postgres
 script:
   - dotnet build
-  - dotnet ef database update
 notifications:
   email: false
