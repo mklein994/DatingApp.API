@@ -5,6 +5,10 @@ env:
   - DefaultConnection="Server=localhost; Database=datingapp; Username=postgres"
 addons:
   postgresql: "10.4"
+  apt:
+    packages:
+      - postgresql-10
+      - postgresql-client-10
 services:
   - postgresql
 before_script:
