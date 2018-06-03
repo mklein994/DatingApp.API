@@ -15,3 +15,4 @@ build:
   stage: build
   script:
     - "dotnet build"
+    - "dotnet ef database update"
