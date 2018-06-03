@@ -4,7 +4,7 @@ dotnet: 2.1.300
 env:
   - DefaultConnection="Server=localhost; Database=datingapp; Username=postgres"
 addons:
-  postgresql: "10.4"
+  postgresql: "10"
   apt:
     packages:
       - postgresql-10
