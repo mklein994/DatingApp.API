@@ -8,7 +8,7 @@ addons:
 services:
   - postgresql
 before_script:
-  - psql -c 'create database datingapp;' -U postgres
+  - psql -U postgres -c 'create database datingapp;'
 script:
   - dotnet build
   - dotnet ef database update
