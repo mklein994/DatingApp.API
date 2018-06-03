@@ -1,11 +1,10 @@
-﻿using Microsoft.EntityFrameworkCore.Metadata;
+﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
-using System;
-using System.Collections.Generic;
+using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace DatingApp.API.Migrations
 {
-    public partial class mysqlinitialcreate : Migration
+    public partial class CreatePostgreSQLDatabase : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -14,20 +13,20 @@ namespace DatingApp.API.Migrations
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
-                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    City = table.Column<string>(nullable: true),
-                    Country = table.Column<string>(nullable: true),
-                    Created = table.Column<DateTime>(nullable: false),
-                    DateOfBirth = table.Column<DateTime>(nullable: false),
-                    Gender = table.Column<string>(nullable: true),
-                    Interests = table.Column<string>(nullable: true),
-                    Introduction = table.Column<string>(nullable: true),
-                    KnownAs = table.Column<string>(nullable: true),
-                    LastActive = table.Column<DateTime>(nullable: false),
-                    LookingFor = table.Column<string>(nullable: true),
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.SerialColumn),
+                    Username = table.Column<string>(nullable: true),
                     PasswordHash = table.Column<byte[]>(nullable: true),
                     PasswordSalt = table.Column<byte[]>(nullable: true),
-                    Username = table.Column<string>(nullable: true)
+                    Gender = table.Column<string>(nullable: true),
+                    DateOfBirth = table.Column<DateTime>(nullable: false),
+                    KnownAs = table.Column<string>(nullable: true),
+                    Created = table.Column<DateTime>(nullable: false),
+                    LastActive = table.Column<DateTime>(nullable: false),
+                    Introduction = table.Column<string>(nullable: true),
+                    LookingFor = table.Column<string>(nullable: true),
+                    Interests = table.Column<string>(nullable: true),
+                    City = table.Column<string>(nullable: true),
+                    Country = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -39,7 +38,7 @@ namespace DatingApp.API.Migrations
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
-                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.SerialColumn),
                     Name = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
@@ -76,15 +75,15 @@ namespace DatingApp.API.Migrations
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
-                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    Content = table.Column<string>(nullable: true),
-                    DateRead = table.Column<DateTime>(nullable: true),
-                    IsRead = table.Column<bool>(nullable: false),
-                    MessageSent = table.Column<DateTime>(nullable: false),
-                    RecipientDeleted = table.Column<bool>(nullable: false),
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.SerialColumn),
+                    SenderId = table.Column<int>(nullable: false),
                     RecipientId = table.Column<int>(nullable: false),
+                    Content = table.Column<string>(nullable: true),
+                    IsRead = table.Column<bool>(nullable: false),
+                    DateRead = table.Column<DateTime>(nullable: true),
+                    MessageSent = table.Column<DateTime>(nullable: false),
                     SenderDeleted = table.Column<bool>(nullable: false),
-                    SenderId = table.Column<int>(nullable: false)
+                    RecipientDeleted = table.Column<bool>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -108,12 +107,12 @@ namespace DatingApp.API.Migrations
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
-                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    DateAdded = table.Column<DateTime>(nullable: false),
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.SerialColumn),
+                    Url = table.Column<string>(nullable: true),
                     Description = table.Column<string>(nullable: true),
+                    DateAdded = table.Column<DateTime>(nullable: false),
                     IsMain = table.Column<bool>(nullable: false),
                     PublicId = table.Column<string>(nullable: true),
-                    Url = table.Column<string>(nullable: true),
                     UserId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
