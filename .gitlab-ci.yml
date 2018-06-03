@@ -1,5 +1,13 @@
 image: microsoft/dotnet:latest
 
+services:
+  - postgres:latest
+
+variables:
+  POSTGRES_DB: datingapp
+  POSTGRES_USER: appuser
+  POSTGRES_PASSWORD: ""
+
 stages:
   - build
 
