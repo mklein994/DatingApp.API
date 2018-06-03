@@ -16,7 +16,7 @@ services:
   - postgresql
 before_script:
   - psql -l
-  - psql -U postgres -c 'create database datingapp;'
+  - psql -h 127.0.0.1 -U postgres -c 'create database datingapp;'
 script:
   - dotnet build
   - dotnet ef database update
