@@ -1,11 +1,10 @@
-﻿using Microsoft.EntityFrameworkCore.Metadata;
-using Microsoft.EntityFrameworkCore.Migrations;
+﻿using Microsoft.EntityFrameworkCore.Migrations;
 using System;
 using System.Collections.Generic;
 
 namespace DatingApp.API.Migrations
 {
-    public partial class mysqlinitialcreate : Migration
+    public partial class CreateSqliteDb : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -14,7 +13,7 @@ namespace DatingApp.API.Migrations
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
-                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                        .Annotation("Sqlite:Autoincrement", true),
                     City = table.Column<string>(nullable: true),
                     Country = table.Column<string>(nullable: true),
                     Created = table.Column<DateTime>(nullable: false),
@@ -39,7 +38,7 @@ namespace DatingApp.API.Migrations
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
-                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                        .Annotation("Sqlite:Autoincrement", true),
                     Name = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
@@ -76,7 +75,7 @@ namespace DatingApp.API.Migrations
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
-                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                        .Annotation("Sqlite:Autoincrement", true),
                     Content = table.Column<string>(nullable: true),
                     DateRead = table.Column<DateTime>(nullable: true),
                     IsRead = table.Column<bool>(nullable: false),
@@ -108,7 +107,7 @@ namespace DatingApp.API.Migrations
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
-                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                        .Annotation("Sqlite:Autoincrement", true),
                     DateAdded = table.Column<DateTime>(nullable: false),
                     Description = table.Column<string>(nullable: true),
                     IsMain = table.Column<bool>(nullable: false),
