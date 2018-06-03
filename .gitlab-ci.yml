@@ -10,7 +10,14 @@ variables:
   ASPNETCORE_ENVIRONMENT: Production
 
 stages:
+  - connect
   - build
+
+connect:
+  stage: connect
+  script:
+    - export PGPASSWORD=$POSTGRES_PASSWORD
+    - psql -h "postgres" -U "$POSTGRES_USER" -d "$POSTGRES_DB" -c "SELECT 'OK' AS status;"
 
 build:
   stage: build
