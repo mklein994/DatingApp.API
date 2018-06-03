@@ -17,7 +17,7 @@ services:
 before_script:
   # sleep a bit to allow the postgres service to wake up
   - sleep 3
-  - psql -h 127.0.0.1 -c 'create database datingapp;' -U postgres
+  - psql -h 127.0.0.1 -c 'create database datingapp;' -U postgres -w
   - psql -l -U postgres
 script:
   - dotnet build
